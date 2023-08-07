@@ -1,3 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
     background-color: lightgray;
+}
+
+.container {
+    display: grid;
+    grid-template-rows: 1fr 10fr 1fr;
+    height: 100dvh;
+    width: 100%;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header {
+    grid-row: 1;
+    background-color: lightgray;
+}
+
+.board-container {
+    grid-row: 2;
+    background-color: white;
+}
+
+.footer {
+    grid-row: 3;
+    background-color: lightgray;
+}
+
+.board {
+    display: grid;
+    grid-template-rows: repeat(1fr);
+    grid-template-columns: repeat(1fr);
+    height: auto;
+    width: 50%;
+    aspect-ratio: 1 / 1;
+    gap: 10px;
+}
+
+.board-square {
+    background-color: lightgray;
+}
+
+.board-square:hover {
+    transition: 0.5s;
+    background-color: darkgrey;
+}
+
+#pos-1 {
+    grid-row: 1;
+    grid-column: 1;
+}
+#pos-2 {
+    grid-row: 1;
+    grid-column: 2;
+}
+#pos-3 {
+    grid-row: 1;
+    grid-column: 3;
+}
+#pos-4 {
+    grid-row: 2;
+    grid-column: 1;
+}
+#pos-5 {
+    grid-row: 2;
+    grid-column: 2;
+}
+#pos-6 {
+    grid-row: 2;
+    grid-column: 3;
+}
+#pos-7 {
+    grid-row: 3;
+    grid-column: 1;
+}
+#pos-8 {
+    grid-row: 3;
+    grid-column: 2;
+}
+#pos-9 {
+    grid-row: 3;
+    grid-column: 3;
 }
