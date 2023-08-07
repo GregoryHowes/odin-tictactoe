@@ -40,6 +40,8 @@ body {
     grid-template-rows: repeat(1fr);
     grid-template-columns: repeat(1fr);
     height: auto;
+    max-height: 650px;
+    max-width: 650px;
     width: 50%;
     aspect-ratio: 1 / 1;
     gap: 10px;
