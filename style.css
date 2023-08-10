@@ -9,7 +9,7 @@ body {
 
 .container {
     display: grid;
-    grid-template-rows: 1fr 10fr 1fr;
+    grid-template-rows: 1fr 1fr 10fr 1fr;
     height: 100dvh;
     width: 100%;
 }
@@ -25,13 +25,31 @@ body {
     background-color: lightgray;
 }
 
-.board-container {
+.control-buttons {
     grid-row: 2;
+    background-color: rgba(255, 255, 255, 0.589);
+}
+
+.btn {
+    font-size: 1rem;
+    background-color: lightgrey;
+    border: none;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background-color: darkgray;
+    transition: 0.5s;
+}
+
+.board-container {
+    grid-row: 3;
     background-color: white;
 }
 
 .footer {
-    grid-row: 3;
+    grid-row: 4;
     background-color: lightgray;
 }
 
