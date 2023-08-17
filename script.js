@@ -16,31 +16,37 @@ const test = function(square) {
 //and to return board status
 const gameBoard = (() => {
     //create blank array to initialise board
-    const gameBoardArray = [];
+    let gameBoardArray = [];
+    let currentPlayer = "";
 
     const initialiseGameBoard = () => {    
-        for (i=0; i<=9; i++) {
+        gameBoardArray = [];
+        for (i=0; i<=9; i++) {        
             gameBoardArray.push(i);
         }
     };
 
-
     //function to start new game
     const newGame = () => {
         initialiseGameBoard();
-        displayController.renderBoard(getBoard());
+        displayController.renderBoard(getBoardStatus());
     }
 
     //return the current board game status array
-    const getBoard = () => {
+    const getBoardStatus = () => {
 		return gameBoardArray;
 	};
 
     //make functions available outside of this module
-    return{newGame, getBoard};
+    return{newGame, getBoardStatus};
 
 })();
 
+
+//Module (i.e. runs upon page load) to provide
+// all functions necessary for displaying the board
+// including getting the DOM objects and adding listeners
+// and a returned function to (re)draw the board on the windows
 const displayController = (() => {
     //get the DOM objects
     const boardGameDOM = document.querySelectorAll(".board-square");
@@ -76,7 +82,7 @@ const displayController = (() => {
 //initial function to execute on page load
 const enterPage = function () {
     //gameBoard.initialiseGameBoard();
-    //displayController.renderBoard(gameBoard.getBoard());
+    //displayController.renderBoard(gameBoard.getBoardStatus());
     //displayController.addBoardListeners();
 }
 
