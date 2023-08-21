@@ -46,6 +46,7 @@ body {
 .board-container {
     grid-row: 3;
     background-color: white;
+    height: 100%;
 }
 
 .footer {
@@ -58,8 +59,8 @@ body {
     grid-template-rows: repeat(1fr);
     grid-template-columns: repeat(1fr);
     height: auto;
-    max-height: 650px;
-    max-width: 650px;
+    max-height: calc(vh/2);
+    max-width: 400px;
     width: 50%;
     aspect-ratio: 1 / 1;
     gap: 10px;
@@ -71,7 +72,16 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    user-select: none;
+    height: 150px;
+    width: 150px;
+
 }
+
+.board-square.unselectable:hover {
+    background-color: rgb(255, 146, 146);
+    transition: 0.5s;
+} 
 
 .board-square:hover {
     transition: 0.5s;
