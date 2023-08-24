@@ -32,6 +32,7 @@ const gameBoard = (() => {
     const newGame = () => {
         initialiseGameBoard();
         displayController.renderBoard(getBoardStatus());
+        displayController.resetDisplayRestrictions();
         currentPlayer = "O";
 
     }
@@ -146,8 +147,15 @@ const displayController = (() => {
         }
     };
 
+    //remove the highlighting of squares already chosen
+    const resetDisplayRestrictions = () => {
+        boardGameDOM.forEach((square) =>  {
+            square.classList.remove("unselectable");
+        });
+    }
+
     //make functions available outside of this module
-    return{renderBoard};
+    return{renderBoard, resetDisplayRestrictions};
 })();
 
 
