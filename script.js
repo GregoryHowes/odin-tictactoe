@@ -79,6 +79,19 @@ const gameBoard = (() => {
         return false;
     }
 
+    //choose a random number between 0 and 8 for the computer's move
+    //if that position in the array is taken, choose another
+    const chooseComputerMove = () => {
+        let positionTaken = true;
+        while (positionTaken) {
+            var randomPosition = Math.floor((Math.random() * 9)); // 0-8 is 9 numbers
+            if (gameBoardArray[randomPosition] == " ") {
+                positionTaken = false;
+            }
+        }
+        return randomPosition;
+    }
+
     //function add the current player's counter to their chosen position
     const addCounterToBoard = (square) => {
         //add to the correct position in the board array
@@ -90,15 +103,31 @@ const gameBoard = (() => {
         //check that the selected element is blank
         if (gameBoardArray[square.srcElement.id.slice(-1)] == " ") {
             gameBoardArray[square.srcElement.id.slice(-1)] = currentPlayer
-            //add visual indicator
-            square.srcElement.classList.add("unselectable");
             //redraw the board
             displayController.renderBoard(getBoardStatus());
             //check for winner
             if (checkforWinner(currentPlayer)) {
-                alert(`Player ${currentPlayer} is the Winner!`)
+                setTimeout(() => {
+                    alert(`Player ${currentPlayer} is the Winner!`);
+                }, 20); 
+
+                //setTimeout(() => alert(`Player ${currentPlayer} is the Winner!`));
+
+                //alert(`Player ${currentPlayer} is the Winner!`)
             }
             switchPlayer();
+            //if the player is now "X", choose a random position
+            //for the computer to play
+            if (currentPlayer == "X") {
+                gameBoardArray[chooseComputerMove()] = currentPlayer;
+                displayController.renderBoard(getBoardStatus());
+                if (checkforWinner(currentPlayer)) {
+                    setTimeout(() => {
+                        alert(`Player ${currentPlayer} is the Winner!`);
+                    }, 20); 
+                }
+                switchPlayer();
+            }
         } else {
 
             console.log(square);
@@ -144,6 +173,10 @@ const displayController = (() => {
             */
             let boardSquare = boardGameDOM[i];
             boardSquare.innerHTML = gameArray[i];
+            //if the square isn't blank, make it unselectable
+            if (gameArray[i] !== " ") {
+                boardSquare.classList.add("unselectable");
+            }
         }
     };
 
