@@ -110,12 +110,9 @@ const gameBoard = (() => {
                 setTimeout(() => {
                     alert(`Player ${currentPlayer} is the Winner!`);
                 }, 20); 
-
-                //setTimeout(() => alert(`Player ${currentPlayer} is the Winner!`));
-
-                //alert(`Player ${currentPlayer} is the Winner!`)
             }
             switchPlayer();
+            
             //if the player is now "X", choose a random position
             //for the computer to play
             if (currentPlayer == "X") {
